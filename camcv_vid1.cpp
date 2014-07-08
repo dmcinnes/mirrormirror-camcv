@@ -85,6 +85,7 @@ int PREDICTION_SEUIL ;
 char key;	
 
 bool shouldExit = false;
+uint currentVisitors = 0;
 
 Mat gray,frame,face,face_resized;
 vector<Mat> images;
@@ -303,9 +304,11 @@ static void video_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffe
 ////////////////////////////////
 
         face_cascade.detectMultiScale(gray, faces, 1.1, 3, CV_HAAR_SCALE_IMAGE, Size(80,80));
-        int visitorCount = faces.size(); // number of visitors found
-
-	printf ("%d", visitorCount);
+        uint visitorCount = faces.size(); // number of visitors found
+        if (currentVisitors != visitorCount) {
+          cout <<visitorCount<<"\n";
+          currentVisitors = visitorCount;
+        }
 
 			
 /////////////////////////
