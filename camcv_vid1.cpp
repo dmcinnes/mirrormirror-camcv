@@ -113,7 +113,7 @@ int nPictureById[MAX_PEOPLE];
 #define MMAL_CAMERA_CAPTURE_PORT 2
 
 // Video format information
-#define VIDEO_FRAME_RATE_NUM 30
+#define VIDEO_FRAME_RATE_NUM 10
 #define VIDEO_FRAME_RATE_DEN 1
 
 /// Video render needs at least 2 buffers.
