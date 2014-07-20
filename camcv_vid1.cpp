@@ -85,6 +85,7 @@ int PREDICTION_SEUIL ;
 char key;
 
 bool shouldExit = false;
+uint totalVisitors   = 0;
 uint currentVisitors = 0;
 
 Mat gray,frame,face,face_resized;
@@ -307,6 +308,9 @@ static void video_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffe
         uint visitorCount = faces.size(); // number of visitors found
         if (currentVisitors != visitorCount) {
           cout <<visitorCount<<"\n";
+          if (currentVisitors > visitorCount) {
+            totalVisitors += currentVisitors - visitorCount;
+          }
           currentVisitors = visitorCount;
         }
 
@@ -801,6 +805,9 @@ int main(int argc, const char **argv)
 
         char sTmp[128];
         sprintf (sTmp, "%.f seconds for %d frames : FPS = %f\n", secondsElapsed,nCount,(float)((float)(nCount)/secondsElapsed));
+        trace((string)(sTmp));
+
+        sprintf (sTmp, "Total Visitors: %d", totalVisitors);
         trace((string)(sTmp));
 
    return 0;
