@@ -307,7 +307,7 @@ static void video_buffer_callback(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffe
         face_cascade.detectMultiScale(gray, faces, 1.1, 3, CV_HAAR_SCALE_IMAGE, Size(80,80));
         uint visitorCount = faces.size(); // number of visitors found
         if (currentVisitors != visitorCount) {
-          cout <<visitorCount<<"\n";
+          cout << visitorCount << endl;
           if (currentVisitors > visitorCount) {
             totalVisitors += currentVisitors - visitorCount;
           }
