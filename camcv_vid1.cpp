@@ -717,6 +717,11 @@ int main(int argc, const char **argv)
     pv_big = cvCreateImage(cvSize(w,h), IPL_DEPTH_8U, 1);
     image = cvCreateImage(cvSize(w,h), IPL_DEPTH_8U, 3);    // final picture to display
 
+    state.camera_parameters.sharpness  = 50;
+    state.camera_parameters.contrast   = 50;
+    state.camera_parameters.brightness = 50;
+    state.camera_parameters.saturation = 50;
+    state.camera_parameters.exposureMode = MMAL_PARAM_EXPOSUREMODE_NIGHT;
 
     // create camera
     if (!create_camera_component(&state))
